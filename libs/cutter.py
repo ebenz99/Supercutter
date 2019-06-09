@@ -28,5 +28,5 @@ def cut(dic):
 	for video in dic:
 		for timestamp in dic[video]:
 			#my_ffmpeg_extract_subclip((os.getcwd()+"/videos/Jake and Amir - Chugging.mp4"), 33.35-.5, 33.73+.5, targetname=("jc.mp4"))
-			my_ffmpeg_extract_subclip((os.getcwd()+"/videos/"+video), timestamp[0]-.1, timestamp[1]+.2, targetname=(os.getcwd()+"/clips/"+str(counter)+"cut.mp4"))
+			my_ffmpeg_extract_subclip((os.getcwd()+"/videos/"+video), timestamp[0]-.1, timestamp[1]+.4, targetname=(os.getcwd()+"/clips/"+str(counter)+"cut.mp4"))
 			counter+=1

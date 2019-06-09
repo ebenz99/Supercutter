@@ -1,5 +1,6 @@
 import os
 import time
+from shutil import copyfile
 
 def dlar(url):
 	l = []
@@ -38,6 +39,11 @@ def dlvr(url):
 	for file in os.listdir(os.getcwd()):
 		if file.endswith("mp4"):
 			l.append(file)
+			os.system(("ffmpeg -i \"" + file + "\" -vf scale=1280:720 \"" + file.split(".")[0]+"c.mp4\""))
+			os.remove(file)
+			os.listdir(os.getcwd())
+			copyfile(file.split(".")[0]+"c.mp4", file)
+			os.remove(file.split(".")[0]+"c.mp4")
 		if file.endswith("wav"):
 			try:
 				os.remove(file)

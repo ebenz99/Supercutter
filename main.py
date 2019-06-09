@@ -25,13 +25,13 @@ keyword = input("What's your keyword?\n")
 #keyword = "facebook"
 
 
+clean()
 
 dlar(url)
 dlvr(url)
 result_dic = transcribe(keyword)
 cut(result_dic)
 stitch()
-clean()
 
 '''
 #for threading
