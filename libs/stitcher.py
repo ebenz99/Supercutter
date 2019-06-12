@@ -13,9 +13,7 @@ def stitch():
 	elif len(varr) == 1:
 		copyfile((os.getcwd()+"/clips/"+varr[0]),os.getcwd()+"/video/finalcut.mp4")
 	else:
-		os.system(("mp4box -cat " + varr[0] + " -cat " + varr[1] + " -new video/fcut.mp4"))
-		for i in range(2,len(varr)):
-			os.system(("mp4box -cat " + varr[i] + " -cat video/fcut.mp4 -new video/fcut.mp4"))
+		os.system("./ccat.sh")
 
 def clean():
 	mydir = os.getcwd()
