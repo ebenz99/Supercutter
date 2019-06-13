@@ -7,6 +7,8 @@ from libs.transcriber import *
 from libs.cutter import *
 from libs.stitcher import *
 
+start_time = time.time()
+
 my_queue = queue.Queue()
 
 def storeInQueue(f):
@@ -46,6 +48,7 @@ t3.join()
 
 cut(my_queue.get())
 '''
+print("--- %s seconds ---" % (time.time() - start_time))
 
 
 

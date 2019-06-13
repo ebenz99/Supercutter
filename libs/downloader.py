@@ -1,6 +1,7 @@
 import os
 import time
 from shutil import copyfile
+import cv2
 
 def dlar(url):
 	l = []
@@ -39,11 +40,16 @@ def dlvr(url):
 	for file in os.listdir(os.getcwd()):
 		if file.endswith("mp4"):
 			l.append(file)
-			os.system(("ffmpeg -i \"" + file + "\" -vf scale=1280:720 \"" + file.split(".")[0]+"c.mp4\""))
-			os.remove(file)
-			os.listdir(os.getcwd())
-			copyfile(file.split(".")[0]+"c.mp4", file)
-			os.remove(file.split(".")[0]+"c.mp4")
+			vid = cv2.VideoCapture(file)
+			height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+			width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+			print(height, width, "\n\n\n")
+			if width != 1280 or height != 720:
+				os.system(("ffmpeg -i \"" + file + "\" -vf scale=1280:720 \"" + file.split(".")[0]+"c.mp4\""))
+				os.remove(file)
+				os.listdir(os.getcwd())
+				copyfile(file.split(".")[0]+"c.mp4", file)
+				os.remove(file.split(".")[0]+"c.mp4")
 		if file.endswith("wav"):
 			try:
 				os.remove(file)
